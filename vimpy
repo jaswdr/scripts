@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+source $HOME/bin/vim-setup-python
+
+rm -f ./tags
+
+for path in $@
+do
+    echo "Generating tags for $path"
+    runtags $path
+done
+
+vim

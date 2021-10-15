@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+export FZF_DEFAULT_COMMAND="rg --files --smart-case --max-depth 5 --sortr modified -j8"
+
+runtags() {
+    ctags -R \
+        --languages=ruby \
+        --exclude=.git \
+        --append=yes \
+        -f ./tags $1
+}
+
+tags() {
+    if [ -d "./$1/lib" ]; then
+        runtags ./$1/lib
+    fi
+}

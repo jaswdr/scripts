@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -e
+
+export FZF_DEFAULT_COMMAND="rg --files --smart-case --max-depth 5 --sortr modified -j8 --type py"
+
+runtags() {
+    ctags -R \
+        --fields=+l \
+        --languages=python \
+        --append=yes \
+        -f ./tags $1
+}
+
+tags() {
+    if [ -d "./$1/src" ]; then
+        runtags ./$1/src
+    fi
+
+    if [ -d "./$1/test" ]; then
+        runtags ./$1/test
+    fi
+
+    if [ -d "./$1/test-integ" ]; then
+        runtags ./$1/test-integ
+    fi
+}

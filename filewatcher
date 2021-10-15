@@ -1,0 +1,3 @@
+#!/bin/bash
+
+while true; do inotifywait -r -e MODIFY $1 && $2; done;

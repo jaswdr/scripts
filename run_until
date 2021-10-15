@@ -1,0 +1,7 @@
+#!/bin/bash
+
+until $@
+do
+    echo "Retrying after 1 second..."
+    sleep 1
+done

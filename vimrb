@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e
+
+source $HOME/bin/vim-setup-ruby
+
+rm -f ./tags
+
+for package in *
+do
+    tags $package
+done
+
+vim
